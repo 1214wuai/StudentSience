@@ -1,18 +1,34 @@
 ﻿  test.c
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(552): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(552): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(553): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(553): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(584): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(584): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(585): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(585): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(617): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(617): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(618): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(618): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(649): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(649): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(650): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
-d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(650): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(513): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(513): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(514): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(514): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(543): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(543): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(544): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(544): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(573): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(573): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(574): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(574): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(603): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(603): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(604): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(604): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(633): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(633): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(634): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(634): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(664): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(664): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(665): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(665): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(694): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(694): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(695): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(695): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(725): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(725): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(726): warning C4133: “函数”: 从“int [20]”到“char *”的类型不兼容
+d:\c\practice\学生成绩管理系统\学生成绩管理系统\test.c(726): warning C4133: “函数”: 从“int [20]”到“const char *”的类型不兼容
   学生成绩管理系统.vcxproj -> D:\c\practice\学生成绩管理系统\Debug\学生成绩管理系统.exe

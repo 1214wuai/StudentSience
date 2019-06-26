@@ -16,8 +16,6 @@ typedef	struct student {
 	struct student *next;//以链表的形式存储
 } stud;
 
-static stud l[50];//全局变量
-
 int menu_select();//菜单选择函数 
 void circulate();//循环选择函数 
 stud* Creat(stud** p);//录入模块 
@@ -60,9 +58,15 @@ int menu_select() {//菜单界面、功能选择
 	printf("\t\t                                \n");
 	printf("\t\t         9.退出系统             \n");
 	printf("\n");
-	printf("\t\t   (请输入数字1~9): ");
-
+s1:	printf("\t\t   (请输入数字1~9): ");
 	scanf("%d", &c);
+	getchar();
+	if (c < 1 || c>9)
+	{
+		printf("\t\t 无效的输入，请重新输入\n");
+		c = 0;
+		goto s1;
+	}
 	return c;
 }
 
@@ -79,17 +83,14 @@ stud* Creat(stud** p) //创建函数，第一次输入学生信息
 	printf("\t\t              请根据提示输入学生信息:      \n\n");
 	int i, j;
 	stud *head, *p1, *p2;
-	
-	printf("\t\t\t  ◎请输入总数:");
-	
+s3:	printf("\t\t\t  ◎请输入总数:");
 	scanf("%d", &i);
+	getchar();
 	if (i <= 0)
 	{
-		printf("\t\t\t输入错误请重试\n");
-		system("pause");//暂停屏幕 
-		exit(0);
+		printf("\t\t\t输入错误,请重新输入\n");
+		goto s3;
 	}
-
 	if ((head = (stud *)malloc(sizeof(stud))) == NULL)//创建头指针 
 	{
 		printf("\t\t\t空间不足建立失败\n");
@@ -97,7 +98,6 @@ stud* Creat(stud** p) //创建函数，第一次输入学生信息
 	}
 	head->next = NULL;
 	p1 = head;
-
 	for (j = 0; j<i; j++)
 	{
 		if ((p2 = (stud *)malloc(sizeof(stud))) == NULL)//创建新的节点 
@@ -122,9 +122,7 @@ stud* Creat(stud** p) //创建函数，第一次输入学生信息
 		p1->next = p2;
 		p2->next = NULL;//使最后节点next为空 
 		p1 = p2;//p1指向最后一个节点
-
 		if (i >= 3 && (j + 1) % 2 == 0) system("cls");
-
 	}
 	printf("\t\t已成功输入学生信息\n");
 	system("pause");
@@ -163,24 +161,21 @@ void Search(stud *p) //按姓名查询函数
 			}
 			else  q = q->next;
 		}
-
 		if (q)//等同于q!=NULL; 
 		{
 			printf("\t\t\t是否继续查询(y or n):");
 			scanf(" %c", &m);
 		}
-
 		if (q == NULL)
 		{
 			printf("\t\t\t无此学生\n");
 			system("pause");
 			break;
 		}
-
 	}
-
 	return;
 }
+
 void IndexOnNumber(stud *p)//按学号查询函数 
 {
 	if (p == NULL || p->next == NULL)//防止无学生信息 
@@ -191,18 +186,14 @@ void IndexOnNumber(stud *p)//按学号查询函数
 	}
 	stud *q = p->next, *a = p->next;
 	char number[20] = { '0' };
-	
 	char m = 'y';
 	while (m == 'y')
 	{
-
-
 		printf("\t\t\t请输入学号:");
 		scanf("%s", number);
 		printf("\n");
 		while (q)
 		{
-
 			if (strcmp(q->num, number) == 0)//比较节点中的学号是否一致 
 			{ //一致输出信息 
 				printf(" |---------|----------------|-----|-----|-----|-----|\n");
@@ -211,24 +202,19 @@ void IndexOnNumber(stud *p)//按学号查询函数
 				printf(" |---------|----------------|-----|-----|-----|-----|\n");
 				break;
 			}
-
 			q = q->next;// 不一致指向下一个节点 
-
 		}
-
 		if (q)//如果q！=NULL 
 		{
 			printf("\t\t\t是否继续查询(y or n):");
 			scanf(" %c", &m);
 		}
-
 		if (q == NULL)
 		{
 			printf("\t\t\t无此学生\n");
 			system("pause");
 			break;
 		}
-
 	}
 	return;
 }
@@ -249,7 +235,7 @@ void ShowStudent(stud *p) //输出所有学生信息
 		n++;
 		q = q->next;
 	}
-	int i=0;
+	int i=1;
 	printf("所有学生成绩如下：\n");
 	printf(" |-----|---------|----------------|-----|-----|-----|-----|\n");
 	printf(" | 序号|    姓名 |            学号| 语文| 数学| 英语| 总分|\n");
@@ -257,7 +243,7 @@ void ShowStudent(stud *p) //输出所有学生信息
 	{
 		printf(" |-----|---------|----------------|-----|-----|-----|-----|\n");
 		printf(" |%4d |%9s|%16s|%3d  |%3d  |%3d  |%3d  |\n",
-			i + 1, d->name, d->num, d->chinese, d->math, d->English, d->sum);
+			i ++, d->name, d->num, d->chinese, d->math, d->English, d->sum);
 		d = d->next;
 	}
 	printf(" |-----|---------|----------------|-----|-----|-----|-----|\n");
@@ -267,28 +253,29 @@ void ShowStudent(stud *p) //输出所有学生信息
 
 void Add(stud *p)//添加函数 
 {
-
 	if (p == NULL || p->next == NULL)
 	{
 		printf("\t\t\t请先输入学生信息\n");
 		system("pause");
 		return;
 	}
-
-	stud *q = p, *a = p, *head[100];
-	int i = -1, b, n = 0;
+	stud *q = p, *a = p;
+	stud *insert;
+	int b, n = 0;
 	char m = 'y';
-	while (q->next)
-	{
-		n++;
-		q = q->next;
-	}
 	while (m == 'y')
 	{
+		n = 0;
+		q = a->next;
+		while (q!=NULL)
+		{
+			n++;
+			q = q->next;
+		}
 		system("cls");
 		q = a;
 		printf("\t\t\t您正在添加学生信息...:\n");
-		if ((head[++i] = (stud *)malloc(sizeof(stud))) == NULL)
+		if ((insert = (stud *)malloc(sizeof(stud))) == NULL)
 		{
 			printf("\t\t\t空间不足建立失败\n");
 			exit(0);
@@ -304,24 +291,23 @@ void Add(stud *p)//添加函数
 		//插入到第b个数据之后 
 		for (n = 1; n <= b; n++)
 			q = q->next;
-		head[i]->next = NULL;
+		insert->next = NULL;
 		printf("\t\t◎请输入学号:");
-		scanf("%s", head[i]->num);
+		scanf("%s", insert->num);
 		printf("\t\t◎请输入姓名:");
-		scanf("%s", head[i]->name);
+		scanf("%s", insert->name);
 		printf("\t\t◎请输入语文成绩:");
-		scanf("%d", &head[i]->chinese);
+		scanf("%d", &insert->chinese);
 		printf("\t\t◎请输入数学成绩:");
-		scanf("%d", &head[i]->math);
+		scanf("%d", &insert->math);
 		printf("\t\t◎请输入英语成绩:");
-		scanf("%d", &head[i]->English);
-		head[i]->sum = head[i]->chinese + head[i]->English + head[i]->math;
-		head[i]->next = q->next;
-		q->next = head[i];
+		scanf("%d", &insert->English);
+		insert->sum = insert->chinese + insert->English + insert->math;
+		insert->next = q->next;
+		q->next = insert;
 		printf("\t\t\t输入成功\n");
 		printf("\t\t\t是否继续增添(y or n):");
 		scanf(" %c", &m);
-
 	}
 	return;
 }
@@ -335,13 +321,11 @@ void Del(stud *p)  //删除函数
 		return;
 	}
 	stud *q = p->next, *a = p->next, *h = p;//h为q的前一个节点
-
 	char m = 'y', b[20] = { '0' }, n[20] = {'0'};
 	int j;
-
 	while (m == 'y')
 	{
-		if (p == NULL)
+		if (p == NULL || p->next == NULL)
 		{
 			printf("\t\t\t请先输入学生信息\n");
 			system("pause");
@@ -350,7 +334,6 @@ void Del(stud *p)  //删除函数
 		system("cls");
 		q = a;
 		h = p;
-
 		printf("\t\t 		  您正在删除学生信息 ...  \n");
 		printf("\t\t                                      \n");
 		printf("\t\t              请选择删除方式          \n");
@@ -361,11 +344,11 @@ void Del(stud *p)  //删除函数
 		printf("\t\t                                      \n");
 		printf("\t\t              0.退出                  \n");
 		printf("\n");
-		printf("\t\t                请输入您的选择:");
+s4:		printf("\t\t                请输入您的选择:");
 		scanf("%d", &j);
+		getchar();
 		switch (j)
 		{
-
 		case 1:
 			printf("\t\t\t请输入学号:");
 			scanf("%s", b);
@@ -439,8 +422,8 @@ void Del(stud *p)  //删除函数
 			break;
 
 		default:
-			printf("\t\t\t输入错误\n");
-			system("pause");
+			printf("\t\t\t输入错误，请重新输入\n");
+			goto s4;
 			break;
 
 		}
@@ -456,7 +439,6 @@ void  Computer(stud *p)//输出学生平均分和总分函数；
 		system("pause");
 		return;
 	}
-
 	stud *q = p->next;
 	int totalnumber = 0;
 	while (q)
@@ -467,14 +449,13 @@ void  Computer(stud *p)//输出学生平均分和总分函数；
 		putchar(10);
 		q = q->next;
 	}
-
 	system("pause");
 }
 
 char print(stud *d)//输出学生全部信息函数； 
 {
 	char m = 'y';
-	int i = 0;
+	int i = 1;
 	printf("所有学生成绩如下：\n");
 	printf(" |-----|---------|----------------|-----|-----|-----|-----|\n");
 	printf(" | 序号|    姓名 |            学号| 语文| 数学| 英语| 总分|\n");
@@ -482,33 +463,14 @@ char print(stud *d)//输出学生全部信息函数；
 	{
 		printf(" |-----|---------|----------------|-----|-----|-----|-----|\n");
 		printf(" |%4d |%9s|%16s|%3d  |%3d  |%3d  |%3d  |\n",
-			i + 1, d->name, d->num, d->chinese, d->math, d->English, d->sum);
+			i++, d->name, d->num, d->chinese, d->math, d->English, d->sum);
 		d = d->next;
 	}
 	printf(" |-----|---------|----------------|-----|-----|-----|-----|\n");
-	
 	printf("\t\t\t是否继续查看(y or n):");
 	scanf(" %c", &m);
 	return m;
 }
-
-
-//void Insertion_Sort(int *arr, int sz)
-//{
-//	int i = 0;
-//	int j = 0;
-//	for (i = 1; i < sz; i++)
-//	{
-//		int tmp = arr[i];
-//		for (j = i; (j > 0) && (arr[j - 1] > tmp); j--)
-//		{
-//			arr[j] = arr[j - 1];
-//		}
-//		arr[j] = tmp;
-//	}
-//	printf("Insertion_Sort:");
-//	Print(arr, sz);
-//}
 
 void reorder(stud **p, int x)//排序函数 
 {                            
@@ -524,7 +486,6 @@ void reorder(stud **p, int x)//排序函数
 		h = h->next;
 	}
 	cur = (*p)->next;
-	
 	switch (x)
 	{
 	case 1:  //总分排序
@@ -556,10 +517,38 @@ void reorder(stud **p, int x)//排序函数
 				_next = cur->next;
 			}
 			tail = cur;//每次排完，tail指针前移一位
-			//cur = (*p)->next;
+		}
+		cur = (*p)->next;
+		tail = NULL;
+		while (cur != tail)
+		{
+			cur = (*p)->next;
+			_next = cur->next;
+			while (_next != NULL)
+			{
+				if ((cur->sum) < (_next->sum))
+				{
+					int chinese = cur->chinese;
+					int English = cur->English;
+					int math = cur->math;
+					int sum = cur->sum;
+					cur->chinese = _next->chinese;
+					cur->English = _next->English;
+					cur->math = _next->math;
+					cur->sum = _next->sum;
+					_next->chinese = chinese;
+					_next->English = English;
+					_next->math = math;
+					_next->sum = sum;
+					strcpy(str, cur->num); strcpy(cur->num, _next->num); strcpy(_next->num, str);
+					strcpy(str, cur->name); strcpy(cur->name, _next->name); strcpy(_next->name, str);
+				}
+				cur = _next;
+				_next = cur->next;
+			}
+			tail = cur;//每次排完，tail指针前移一位
 		}
 		break;
-
 	case 2: //语文排序 
 		while (cur != tail)
 		{
@@ -588,11 +577,38 @@ void reorder(stud **p, int x)//排序函数
 				_next = cur->next;
 			}
 			tail = cur;//每次排完，tail指针前移一位
-			//cur = (*p)->next;
 		}
-
+		cur = (*p)->next;
+		_next = cur->next;
+		while (cur != tail)
+		{
+			cur = (*p)->next;
+			_next = cur->next;
+			while (_next != NULL)
+			{
+				if ((cur->chinese) < (_next->chinese))
+				{
+					int chinese = cur->chinese;
+					int English = cur->English;
+					int math = cur->math;
+					int sum = cur->sum;
+					cur->chinese = _next->chinese;
+					cur->English = _next->English;
+					cur->math = _next->math;
+					cur->sum = _next->sum;
+					_next->chinese = chinese;
+					_next->English = English;
+					_next->math = math;
+					_next->sum = sum;
+					strcpy(str, cur->num); strcpy(cur->num, _next->num); strcpy(_next->num, str);
+					strcpy(str, cur->name); strcpy(cur->name, _next->name); strcpy(_next->name, str);
+				}
+				cur = _next;
+				_next = cur->next;
+			}
+			tail = cur;//每次排完，tail指针前移一位
+		}
 		break;
-
 	case 3:    //数学排序 
 		while (cur != tail)
 		{
@@ -623,8 +639,37 @@ void reorder(stud **p, int x)//排序函数
 			tail = cur;//每次排完，tail指针前移一位
 			//cur = (*p)->next;
 		}
+		cur = (*p)->next;
+		tail = NULL;
+		while (cur != tail)
+		{
+			cur = (*p)->next;
+			_next = cur->next;
+			while (_next != NULL)
+			{
+				if ((cur->math) < (_next->math))
+				{
+					int chinese = cur->chinese;
+					int English = cur->English;
+					int math = cur->math;
+					int sum = cur->sum;
+					cur->chinese = _next->chinese;
+					cur->English = _next->English;
+					cur->math = _next->math;
+					cur->sum = _next->sum;
+					_next->chinese = chinese;
+					_next->English = English;
+					_next->math = math;
+					_next->sum = sum;
+					strcpy(str, cur->num); strcpy(cur->num, _next->num); strcpy(_next->num, str);
+					strcpy(str, cur->name); strcpy(cur->name, _next->name); strcpy(_next->name, str);
+				}
+				cur = _next;
+				_next = cur->next;
+			}
+			tail = cur;//每次排完，tail指针前移一位
+		}
 		break;
-
 	case 4://英语排序 
 		while (cur != tail)
 		{
@@ -655,23 +700,51 @@ void reorder(stud **p, int x)//排序函数
 			tail = cur;//每次排完，tail指针前移一位
 			//cur = (*p)->next;
 		}
+		cur = (*p)->next;
+		tail = NULL;
+		while (cur != tail)
+		{
+			cur = (*p)->next;
+			_next = cur->next;
+			while (_next != NULL)
+			{
+				if ((cur->English) < (_next->English))
+				{
+					int chinese = cur->chinese;
+					int English = cur->English;
+					int math = cur->math;
+					int sum = cur->sum;
+					cur->chinese = _next->chinese;
+					cur->English = _next->English;
+					cur->math = _next->math;
+					cur->sum = _next->sum;
+					_next->chinese = chinese;
+					_next->English = English;
+					_next->math = math;
+					_next->sum = sum;
+					strcpy(str, cur->num); strcpy(cur->num, _next->num); strcpy(_next->num, str);
+					strcpy(str, cur->name); strcpy(cur->name, _next->name); strcpy(_next->name, str);
+				}
+				cur = _next;
+				_next = cur->next;
+			}
+			tail = cur;//每次排完，tail指针前移一位
+					   //cur = (*p)->next;
+		}
 		break;
 	}
 	int x1 = 0;
 	return ;
 }
 
-
 void Compare(stud *p) //比较函数 
 {
-
 	if (p == NULL || p->next == NULL)
 	{
 		printf("\t\t\t请先输入学生信息\n");
 		system("pause");
 		return;
 	}
-
 	stud *q = p->next, *a = p->next, *d = NULL;
 	char m = 'y';
 	int n = 0, f, x;
@@ -683,7 +756,6 @@ void Compare(stud *p) //比较函数
 	while (m == 'y')
 	{
 		system("cls");
-
 		printf("\t\t 您正在查看学生排名:\n\n");
 		printf("\t\t 请选择查看方式\n");
 		printf("\t\t 1.查询总分排序\n");
@@ -692,10 +764,14 @@ void Compare(stud *p) //比较函数
 		printf("\t\t 4.查询英语排序\n");
 		printf("\t\t 0.退出\n");
 		printf("\n");
-
-		printf("\t\t                请输入您的选择:");
+s:		printf("\t\t                请输入您的选择:");
 		scanf("%d", &f);
-
+		getchar();
+		if (f < 1 || f>4)
+		{
+			printf("\t\t\t输入错误,请重新输入\n");
+			goto s;
+		}
 		switch (f)
 		{
 		case 1:
@@ -732,6 +808,7 @@ void End()
 	printf("\n");
 	system("pause");
 }
+
 void circulate()
 {
 	stud *p = NULL;
@@ -763,7 +840,7 @@ void circulate()
 			break;
 		case 9:
 			End();
-			return ;
+			return;
 		default:
 			printf("\t\t\t输入错误请重新输入\n");
 			printf("\n");
